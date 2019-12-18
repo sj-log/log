@@ -10,24 +10,6 @@ export default function Info(props) {
     <section className="info_blurb">
       <ReactMarkdown source={markdownBody} />
     </section>
-    <style jsx>{`
-      .info_blurb {
-        max-width: 800px;
-        padding: 1.5rem 1.25rem;
-      }
-      
-      @media (min-width: 768px) {
-        .info_blurb {
-          padding: 2rem;
-        }
-      }
-      
-      @media (min-width: 1440px) {
-        .info_blurb {
-          padding: 3rem;
-        }
-      }
-    `}</style>
   </Layout>
   );
 }

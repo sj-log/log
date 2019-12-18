@@ -1,0 +1,71 @@
+@font-face {
+    font-family: RIDIBatang;
+    src: url("./RIDIBatang.otf") format("opentype");
+}
+
+$goldenSize: 1.1613rem;
+
+.layout {
+    display: grid;
+    grid-template-columns: 85% 15%;
+    grid-template-areas: 'content' 'nav';
+}
+
+.header {
+    display: inline-block;
+    height: 100vh;
+}
+
+.content {
+    grid-area: content;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+    }
+    & > * {
+        padding-left: 3rem;
+        padding-right:3rem;
+    }
+    // blog article 
+    .blog {
+        font-family: 'RIDIBatang';
+        .blog__body {
+            line-height: 22pt;
+            letter-spacing: 0.8px;
+            text-align: left;
+        }
+    }
+
+    // blog list
+    .list {
+        padding: 0;
+
+        & > a {
+            list-style: none;
+            text-decoration: none;
+
+            .blog__info {
+
+                .post-title {
+                    font-family: 'RIDIBatang';
+                    -webkit-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                    margin: 0.46452rem;
+                    color: grey;
+                    text-align: left;
+                    font-size: $goldenSize;
+                    font-weight: 400;
+
+                    display: inline-block;
+                }
+                .post-title:hover {
+                    transform: translateX(1rem);
+                    color: black;
+                }
+
+            }
+
+        }
+    }
+}

@@ -3,6 +3,7 @@ import matter from 'gray-matter'
 import Layout from "../components/Layout";
 import BlogList from "../components/BlogList";
 
+
 const Index = (props) => {
   return (
     <Layout pathname="/" siteTitle={props.title} siteDescription={props.description}>

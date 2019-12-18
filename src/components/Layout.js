@@ -1,6 +1,8 @@
 import Header from "./Header";
 import Meta from './Meta'
 
+import '../style/all.scss'
+
 export default function Layout(props) {
   return (
     <section
@@ -17,34 +19,9 @@ export default function Layout(props) {
       siteTitle={props.siteTitle}
       siteDescription={props.siteDescription}
     />
-    <Header siteTitle={props.siteTitle} />
     <div className="content">{props.children}</div>
-    <style jsx>
-      {`
-        .layout {
-          overflow-x: hidden;
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-        }
-        .layout .info_page {
-          color: #ebebeb;
-        }
-        .content {
-          flex-grow: 1;
-        }
-        @media (min-width: 768px) {
-          .layout {
-            display: block;
-          }
-          .content {
-            flex-grow: none;
-            width: 70vw;
-            margin-left: 30vw;
-          }
-        }
-      `}
-    </style>
+    <Header siteTitle={props.siteTitle} />
+  
   </section>
   );
 }
