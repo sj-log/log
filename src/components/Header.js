@@ -17,7 +17,7 @@ export default function Header(props) {
           "/" : "/info"}`}>
             <h1>{`${typeof window !== "undefined" &&
           window.location.pathname == "/info" ?
-          "close" : "info"}`}</h1>
+          "Exit" : "Info"}`}</h1>
           </Link>
         </div>
       </nav>

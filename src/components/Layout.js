@@ -10,10 +10,6 @@ export default function Layout(props) {
       props.pathname == "info" &&
       "info_page"}`
     }
-    style={{
-      backgroundColor: `${props.bgColor && props.bgColor}`,
-      color: `${props.pathname == "info" && 'white'}`
-    }}
   >
     <Meta
       siteTitle={props.siteTitle}

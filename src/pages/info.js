@@ -8,7 +8,7 @@ export default function Info(props) {
   return (
     <Layout pathname='info' bgColor={frontmatter.background_color} siteTitle={props.title}>
     <section className="info_blurb">
-      <ReactMarkdown source={markdownBody} />
+      <ReactMarkdown escapeHtml={true} source={markdownBody} />
     </section>
   </Layout>
   );

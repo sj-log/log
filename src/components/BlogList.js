@@ -24,7 +24,6 @@ const BlogList = (props) => {
             <li>
               <div className="blog__info">
                 <h2 className='post-title'>{post.document.data.title}</h2>
-                {/* <h3> {reformatDate(post.document.data.date)}</h3> */}
               </div>
             </li>
             </a>

@@ -25,11 +25,21 @@ $goldenSize: 1.1613rem;
     }
     & > * {
         padding-left: 3rem;
-        padding-right:3rem;
+        padding-right: 3rem;
     }
     // blog article 
     .blog {
         font-family: 'RIDIBatang';
+
+        .blog__info {
+            h1 {
+                font-size: $goldenSize*1.5;
+            }
+            h3 {
+                color: grey;
+                font-size: $goldenSize/2;
+            }
+        }
         .blog__body {
             line-height: 22pt;
             letter-spacing: 0.8px;

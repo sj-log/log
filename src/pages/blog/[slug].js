@@ -25,7 +25,7 @@ export default function BlogTemplate(props) {
                     <h3>{reformatDate(frontmatter.date)}</h3>
                 </div>
                 <div className="blog__body">
-                    <ReactMarkdown source={markdownBody}/>
+                    <ReactMarkdown escapeHtml={false}source={markdownBody}/>
                 </div>
             </article>
 
