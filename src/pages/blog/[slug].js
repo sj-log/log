@@ -21,8 +21,8 @@ export default function BlogTemplate(props) {
                     <img src={frontmatter.hero_image} alt={`blog_hero_${frontmatter.title}`}/>
                 </figure> */}
                 <div className="blog__info">
-                    <h1>{frontmatter.title}</h1>
-                    <h3>{reformatDate(frontmatter.date)}</h3>
+                    <h1 className="post-title">{frontmatter.title}</h1>
+                    <h3 className="post-date">{reformatDate(frontmatter.date)}</h3>
                 </div>
                 <div className="blog__body">
                     <ReactMarkdown escapeHtml={false}source={markdownBody}/>

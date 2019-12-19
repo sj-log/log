@@ -32,11 +32,13 @@ $goldenSize: 1.1613rem;
         font-family: 'RIDIBatang';
 
         .blog__info {
-            h1 {
+            .post-title {
                 font-size: $goldenSize*1.5;
+                margin-bottom: $goldenSize;
             }
-            h3 {
+            .post-date {
                 color: grey;
+                font-style: italic;
                 margin-top:0;
                 font-size: $goldenSize/1.2;
             }
