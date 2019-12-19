@@ -51,7 +51,7 @@ BlogTemplate.getInitialProps = async function (ctx) {
    
 
     // comment part
-    const disqusShortname = 'youn_seungjin';
+    const disqusShortname = 'https-log-sj-now-sh';
     const disqusConfig = {
         url: url,
         identifier: slug,
