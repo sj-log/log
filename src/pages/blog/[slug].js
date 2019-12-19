@@ -32,6 +32,7 @@ export default function BlogTemplate(props) {
                 </div>
             </article>
             <footer>
+                    {console.log(props.disqusShortname, props.disqusConfig)}
                 <Disqus.DiscussionEmbed shortname={props.disqusShortname} config={props.disqusConfig}/>
 
             </footer>
@@ -42,18 +43,19 @@ export default function BlogTemplate(props) {
 }
 
 BlogTemplate.getInitialProps = async function (ctx) {
-    const url = ctx.req.headers.referer
+  
     const {slug} = ctx.query
     const content = await import (`../../posts/${slug}.md`)
     const config = await import (`../../data/config.json`)
     const data = matter(content.default);
     const title = data.data.title;
    
+    console.log(config.siteUrl, config.disqusShortName)
 
     // comment part
-    const disqusShortname = 'https-log-sj-now-sh';
+    const disqusShortname = config.disqusShortName;
     const disqusConfig = {
-        url: url,
+        url: config.siteUrl + ctx.asPath,
         identifier: slug,
         title: title
     }

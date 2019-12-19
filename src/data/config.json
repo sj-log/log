@@ -1,5 +1,7 @@
 {
   "title":"Log",
   "description":"",
-  "repositoryUrl":"https://github.com/kendallstrautman/brevifolia-next-tinacms"
+  "repositoryUrl":"https://github.com/kendallstrautman/brevifolia-next-tinacms",
+  "disqusShortName" : "ollagada",
+  "siteUrl":"https://log-sj.now.sh/"
 }
