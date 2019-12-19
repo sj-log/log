@@ -3,6 +3,16 @@ import ReactMarkdown from "react-markdown";
 
 const BlogList = (props) => {
 
+  const sortByDateAcs =(props) =>{
+    var allBlogs = props.allBlogs;
+    allBlogs.sort((a,b)=>{
+      if(a.document.data.date > b.document.data.date) return -1
+      if(a.document.data.date < b.document.data.date) return 1
+      return 0
+    })
+
+  }
+
   function truncateSummary(content) {
     return content.slice(0, 200).trimEnd();
   }
@@ -14,6 +24,7 @@ const BlogList = (props) => {
 
   return (
     <>
+      {sortByDateAcs(props) }
       <ul className="list">
         {props.allBlogs.length > 1 && props.allBlogs.map(post => (
           <Link

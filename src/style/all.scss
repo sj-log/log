@@ -37,7 +37,8 @@ $goldenSize: 1.1613rem;
             }
             h3 {
                 color: grey;
-                font-size: $goldenSize/2;
+                margin-top:0;
+                font-size: $goldenSize/1.2;
             }
         }
         .blog__body {
