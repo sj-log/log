@@ -51,6 +51,10 @@ $goldenSize: 1.1613rem;
         }
     }
 
+    .disqus-footer{
+        margin-top : $goldenSize*4;
+      
+    }
     // blog list
     .list {
         padding: 0;
@@ -82,4 +86,6 @@ $goldenSize: 1.1613rem;
 
         }
     }
+
+    
 }

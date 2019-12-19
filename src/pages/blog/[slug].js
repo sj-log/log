@@ -32,8 +32,7 @@ export default function BlogTemplate(props) {
                     <ReactMarkdown escapeHtml={false} source={markdownBody}/>
                 </div>
             </article>
-            <footer>
-                {/* {console.log("disqusShortName :" + props.disqusShortname, '\n"disqusShortName :"', props.disqusConfig)} */}
+            <footer className="disqus-footer">
                 <Disqus.DiscussionEmbed
                     shortname={props.disqusShortname}
                     config={props.disqusConfig}/>
