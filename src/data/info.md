@@ -1,5 +1,5 @@
 ---
-title: Info
+title : Info
 ---
 
-SJ's blog
+This is a blog for myself
