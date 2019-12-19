@@ -16,13 +16,14 @@ export default function BlogTemplate(props) {
     const markdownBody = props.content
     const frontmatter = props.data
 
-
     return (
-        <Layout siteTitle={props.siteTitle}>
+        <Layout
+            siteTitle={props.siteTitle}
+            postExcerpt={props.postExcerpt}
+            siteUrl={props.siteUrl}
+            postThumbnail={props.postThumbnail}>
             <article className="blog">
-                {/* <figure className="blog__hero">
-                    <img src={frontmatter.hero_image} alt={`blog_hero_${frontmatter.title}`}/>
-                </figure> */}
+
                 <div className="blog__info">
                     <h1 className="post-title">{frontmatter.title}</h1>
                     <h3 className="post-date">{reformatDate(frontmatter.date)}</h3>
@@ -32,8 +33,10 @@ export default function BlogTemplate(props) {
                 </div>
             </article>
             <footer>
-                    {console.log(props.disqusShortname, props.disqusConfig)}
-                <Disqus.DiscussionEmbed shortname={props.disqusShortname} config={props.disqusConfig}/>
+                {/* {console.log("disqusShortName :" + props.disqusShortname, '\n"disqusShortName :"', props.disqusConfig)} */}
+                <Disqus.DiscussionEmbed
+                    shortname={props.disqusShortname}
+                    config={props.disqusConfig}/>
 
             </footer>
 
@@ -43,19 +46,25 @@ export default function BlogTemplate(props) {
 }
 
 BlogTemplate.getInitialProps = async function (ctx) {
-  
+
     const {slug} = ctx.query
     const content = await import (`../../posts/${slug}.md`)
     const config = await import (`../../data/config.json`)
     const data = matter(content.default);
     const title = data.data.title;
-   
-    console.log(config.siteUrl, config.disqusShortName)
-
+    const siteUrl = config.siteUrl + ctx.asPath;
+    const postExcerpt = data
+        .content
+        .substring(155, 0);
+    var postThumbnail = data.data.thumbnail;
+    if (postThumbnail == undefined) {
+        postThumbnail = "https://user-images.githubusercontent.com/35059428/71152640-57a4e400-227a-11ea-8" +
+                "d95-788d168e3764.png"
+    }
     // comment part
     const disqusShortname = config.disqusShortName;
     const disqusConfig = {
-        url: config.siteUrl + ctx.asPath,
+        url: siteUrl,
         identifier: slug,
         title: title
     }
@@ -63,7 +72,11 @@ BlogTemplate.getInitialProps = async function (ctx) {
     return {
         disqusShortname,
         disqusConfig,
-        siteTitle: config.title,
+        postThumbnail: postThumbnail,
+        postExcerpt: postExcerpt,
+        siteDescription: postExcerpt,
+        siteUrl: siteUrl,
+        siteTitle: config.title + " | " + title,
         ...data
     }
 }
