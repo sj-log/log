@@ -1,7 +1,9 @@
 import * as React from 'react'
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import Disqus from 'disqus-react';
 
+// components
 import Layout from '../../components/Layout'
 
 export default function BlogTemplate(props) {
@@ -14,6 +16,7 @@ export default function BlogTemplate(props) {
     const markdownBody = props.content
     const frontmatter = props.data
 
+
     return (
         <Layout siteTitle={props.siteTitle}>
             <article className="blog">
@@ -25,9 +28,13 @@ export default function BlogTemplate(props) {
                     <h3 className="post-date">{reformatDate(frontmatter.date)}</h3>
                 </div>
                 <div className="blog__body">
-                    <ReactMarkdown escapeHtml={false}source={markdownBody}/>
+                    <ReactMarkdown escapeHtml={false} source={markdownBody}/>
                 </div>
             </article>
+            <footer>
+                <Disqus.DiscussionEmbed shortname={props.disqusShortname} config={props.disqusConfig}/>
+
+            </footer>
 
         </Layout>
     );
@@ -39,7 +46,20 @@ BlogTemplate.getInitialProps = async function (ctx) {
     const content = await import (`../../posts/${slug}.md`)
     const config = await import (`../../data/config.json`)
     const data = matter(content.default);
+    const title = data.data.title;
+   
+
+    // comment part
+    const disqusShortname = 'ollagada';
+    const disqusConfig = {
+        url: slug,
+        identifier: slug,
+        title: title
+    }
+
     return {
+        disqusShortname,
+        disqusConfig,
         siteTitle: config.title,
         ...data
     }

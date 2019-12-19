@@ -1,5 +1,6 @@
 import matter from 'gray-matter'
 
+// components
 import Layout from "../components/Layout";
 import BlogList from "../components/BlogList";
 
@@ -12,6 +13,7 @@ const Index = (props) => {
             <section>
                 <BlogList allBlogs={props.allBlogs}/>
             </section>
+            
         </Layout>
     );
 };
