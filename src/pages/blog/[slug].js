@@ -50,7 +50,7 @@ BlogTemplate.getInitialProps = async function (ctx) {
    
 
     // comment part
-    const disqusShortname = 'ollagada';
+    const disqusShortname = 'youn_seungjin';
     const disqusConfig = {
         url: slug,
         identifier: slug,
