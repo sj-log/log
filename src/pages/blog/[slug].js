@@ -42,6 +42,7 @@ export default function BlogTemplate(props) {
 }
 
 BlogTemplate.getInitialProps = async function (ctx) {
+    const url = ctx.req.headers.referer
     const {slug} = ctx.query
     const content = await import (`../../posts/${slug}.md`)
     const config = await import (`../../data/config.json`)
@@ -52,7 +53,7 @@ BlogTemplate.getInitialProps = async function (ctx) {
     // comment part
     const disqusShortname = 'youn_seungjin';
     const disqusConfig = {
-        url: slug,
+        url: url,
         identifier: slug,
         title: title
     }
