@@ -17,6 +17,7 @@ export default function Meta(props) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1"/>
                 <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
+                <link rel="icon" href="https://user-images.githubusercontent.com/35059428/71266396-a68e6e80-238b-11ea-887a-f64c555846a2.png"></link>
                 <title>{props.siteTitle}</title>
                 <meta name="Description" content={props.postExcerpt}></meta>
                 <meta name="robots" content="index"/>
