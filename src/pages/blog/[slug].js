@@ -25,7 +25,7 @@ export default function BlogTemplate(props) {
             <article className="blog">
 
                 <div className="blog__info">
-                    <h1 className="post-title">{frontmatter.title}</h1>
+                    <h1 className="post-title lengthen">{frontmatter.title}</h1>
                     <h3 className="post-date">{reformatDate(frontmatter.date)}</h3>
                 </div>
                 <div className="blog__body">

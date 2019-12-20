@@ -170,6 +170,12 @@ body {
                 line-height: 22pt;
                 letter-spacing: 0.8px;
                 text-align: left;
+
+                pre{
+                    padding: $goldenSize;
+                    box-shadow: 0px 5px 10px #d6d6d6;
+                    border-radius: 10px;
+                }
             }
         }
 
