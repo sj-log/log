@@ -24,7 +24,8 @@ const BlogList = (props) => {
                     .allBlogs
                     .map((post, i) => {
                         {
-                            if(post.document.data.category == category) {
+                            if(post.document.data.category == category 
+                            && post.document.data.status !== "draft") {
                                 return (
                                     <Fragment key={i}>
                                         <Link

@@ -21,7 +21,8 @@ $goldenSize: 1.1613rem;
     overflow: hidden;
 
     img {
-        width: 100%;
+        max-height: 90vh;
+        max-width: 100%;
     }
     & > * {
         padding-left: 3rem;
@@ -32,7 +33,10 @@ $goldenSize: 1.1613rem;
         font-family: 'RIDIBatang';
 
         .blog__info {
-            text-align : center;
+            
+            text-align : left;
+            margin-bottom : 4rem;
+            
             .post-title {
                 font-size: $goldenSize*1.5;
                 margin-bottom: $goldenSize;

@@ -3,4 +3,5 @@ src/.next
 .env
 src/out/
 backup
+src/posts
 posts
