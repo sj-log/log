@@ -1,7 +1,16 @@
 import Head from 'next/head'
 import {Fragment} from 'react'
+import {useEffect} from 'react';
+import ReactGA from 'react-ga';
 
 export default function Meta(props) {
+
+    useEffect(() => {
+        ReactGA.initialize('UA-116676814-1')
+        ReactGA.pageview(document.location.pathname)
+
+        console.log('React-ga done!');
+    }, []); // passing an empty array as second argument triggers the callback in useEffect only after the initial render thus replicating `componentDidMount` lifecycle behaviour
 
     return (
         <Fragment>
@@ -25,9 +34,11 @@ export default function Meta(props) {
                 <noscript
                     dangerouslySetInnerHTML={{
                     __html: `<iframe src="https://www.googletagmanager.com/gtag/js?id=UA-116676814-1" height="0" width="0" style="display:none;visibility:hidden;"></iframe>`
-                }}/>
-                {/* Google Search Console Verification */}
-<meta name="google-site-verification" content="Oi4aEIVWNSLUGnU1nDqrcJmLAQx4AVgy_GG5ZvqDB8w" />
+                }}/> {/* Google Search Console Verification */}
+                <meta
+                    name="google-site-verification"
+                    content="Oi4aEIVWNSLUGnU1nDqrcJmLAQx4AVgy_GG5ZvqDB8w"/>
+
             </Head>
         </Fragment>
     )

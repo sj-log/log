@@ -5,16 +5,20 @@ export default function Header(props) {
         <header className="header">
             <nav className="nav" role="navigation" aria-label="main navigation">
                 <Link href="/">
-                    <h1>Log</h1>
+                    <a>
+                        <h1 className="">Log</h1>
+                    </a>
                 </Link>
                 <div>
                     <Link
                         href={`${typeof window !== "undefined" && window.location.pathname == "/info"
                         ? "/"
                         : "/info"}`}>
-                        <h1>{`${typeof window !== "undefined" && window.location.pathname == "/info"
-                                ? "Exit"
-                                : "Info"}`}</h1>
+                        <a>
+                            <h1 className="">{`${typeof window !== "undefined" && window.location.pathname == "/info"
+                                    ? "Exit"
+                                    : "Info"}`}</h1>
+                        </a>
                     </Link>
                 </div>
             </nav>

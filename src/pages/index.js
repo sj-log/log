@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import Layout from "../components/Layout";
 import BlogList from "../components/BlogList";
 
+
 const Index = (props) => {
     return (
         <Layout
@@ -11,10 +12,12 @@ const Index = (props) => {
             siteTitle={props.title}
             siteDescription={props.description}>
             <section>
+          
                 <BlogList allBlogs={props.allBlogs}/>
+               
             </section>
             
-        </Layout>
+        </Layout>   
     );
 };
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
 import {Fragment} from "react";
 
 const BlogList = (props) => {
@@ -36,7 +35,7 @@ const BlogList = (props) => {
                                             <a>
                                                 <li>
                                                     <div className="blog__info">
-                                                        <h2 className='post-title'>{post.document.data.title}</h2>
+                                                        <h2 className='post-title translateX'>{post.document.data.title}</h2>
                                                     </div>
                                                 </li>
                                             </a>
