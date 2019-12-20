@@ -18,7 +18,7 @@ const BlogList = (props) => {
         var category = category;
         return (
             <ul className="list">
-                <h1 className="category-title">{category}</h1>
+                <h1 className="category-title lengthen2">{category}</h1>
                 {props.allBlogs.length > 1 && props
                     .allBlogs
                     .map((post, i) => {

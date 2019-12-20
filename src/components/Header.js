@@ -6,7 +6,7 @@ export default function Header(props) {
             <nav className="nav" role="navigation" aria-label="main navigation">
                 <Link href="/">
                     <a>
-                        <h1 className="">Log</h1>
+                        <h1 className="lengthen">{'</>'}</h1>
                     </a>
                 </Link>
                 <div>
@@ -15,7 +15,7 @@ export default function Header(props) {
                         ? "/"
                         : "/info"}`}>
                         <a>
-                            <h1 className="">{`${typeof window !== "undefined" && window.location.pathname == "/info"
+                            <h1 className="lengthen">{`${typeof window !== "undefined" && window.location.pathname == "/info"
                                     ? "Exit"
                                     : "Info"}`}</h1>
                         </a>
