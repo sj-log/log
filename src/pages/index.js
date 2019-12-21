@@ -5,6 +5,7 @@ import dynamic from'next/dynamic'
 const Layout = dynamic(()=>import("../components/Layout") ,{ssr:false})
 const BlogList = dynamic(()=>import("../components/BlogList"),{ssr:false})
 
+
 const Index = props => {
     return (
         <Layout
@@ -42,7 +43,10 @@ Index.getInitialProps = async function () {
 
         
         return data;
-    })(require.context("../posts", true, /\.md$/));
+    })
+    
+    // (require.context("../posts", true, /\.md$/));
+    (await require.context("../posts", true, /\.md$/));
 
     return {
         allBlogs: posts,
