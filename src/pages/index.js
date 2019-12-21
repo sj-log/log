@@ -1,23 +1,21 @@
 import matter from 'gray-matter'
-
+import dynamic from'next/dynamic'
 // components
-import Layout from "../components/Layout";
-import BlogList from "../components/BlogList";
 
+const Layout = dynamic(()=>import("../components/Layout") ,{ssr:false})
+const BlogList = dynamic(()=>import("../components/BlogList"),{ssr:false})
 
-const Index = (props) => {
+const Index = props => {
     return (
         <Layout
             pathname="/"
             siteTitle={props.title}
             siteDescription={props.description}>
             <section>
-          
-                <BlogList allBlogs={props.allBlogs}/>
-               
+            <BlogList allBlogs={props.allBlogs}></BlogList>
             </section>
-            
-        </Layout>   
+
+        </Layout>
     );
 };
 
@@ -27,7 +25,7 @@ Index.getInitialProps = async function () {
     const siteConfig = await import (`../data/config.json`)
     //get posts & context from folder
     const posts = (context => {
-        const keys = context.keys(); // this is the sorted 
+        const keys = context.keys(); // this is the sorted
         const values = keys.map(context);
         const data = keys.map((key, index) => {
             // Create slug from filename
@@ -36,15 +34,16 @@ Index.getInitialProps = async function () {
                 .split(".")
                 .slice(0, -1)
                 .join("."); // remove hypens and dot
-            const value = values[index]; 
+            const value = values[index];
             // Parse yaml metadata & markdownbody in document
             const document = matter(value.default);
             return {document, slug};
         });
+
         
         return data;
     })(require.context("../posts", true, /\.md$/));
-      
+
     return {
         allBlogs: posts,
         ...siteConfig

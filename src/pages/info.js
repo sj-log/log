@@ -2,11 +2,13 @@ import Layout from "../components/Layout";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
 
+
+
 export default function Info(props) {
   const frontmatter = props.data
   const markdownBody = props.content
   return (
-    <Layout pathname='info' bgColor={frontmatter.background_color} siteTitle={props.title}>
+    <Layout pathname='Info' bgColor={frontmatter.background_color} siteTitle={props.title}>
     <section className="info_blurb">
       <ReactMarkdown escapeHtml={true} source={markdownBody} />
     </section>

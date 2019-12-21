@@ -7,10 +7,13 @@ import '../style/all.scss'
 
 
 // Loading component
-import Loader from 'react-loader-spinner'
+// import Loader from 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import {PageTransition} from 'next-page-transitions'
 
+// client side rendering
+import dynamic from 'next/dynamic'
+const Loader = dynamic(()=>import('react-loader-spinner'),{ssr:false})
 
 
 export default class RootApp extends App {
@@ -62,7 +65,7 @@ export default class RootApp extends App {
                         loadingDelay={3500}
                         loadingTimeout={{
                         enter: 400,
-                        exit: 0
+                        exit: 5000
                     }}
                         loadingClassNames="loading-indicator">
                         <Component {...pageProps}></Component>

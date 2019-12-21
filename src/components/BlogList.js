@@ -14,11 +14,13 @@ const BlogList = (props) => {
         })
     }
 
+    
+
     const showPostsByCategory = (props, category) => {
         var category = category;
         return (
             <ul className="list">
-                <h1 className="category-title lengthen2">{category}</h1>
+                <h1 id={category} className="category-title lengthen2">{category}</h1>
                 {props.allBlogs.length > 1 && props
                     .allBlogs
                     .map((post, i) => {
@@ -56,8 +58,8 @@ const BlogList = (props) => {
             {sortByDateAcs(props)}
             {showPostsByCategory(props, "Coding")}
             {showPostsByCategory(props, "Book")}
-            {showPostsByCategory(props, "Essay")}
-            {showPostsByCategory(props, "Marketing")}
+                {showPostsByCategory(props, "Essay")}
+                {showPostsByCategory(props, "Marketing")}
         </Fragment >
     );
 };

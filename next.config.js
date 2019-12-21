@@ -2,9 +2,11 @@ const glob = require('glob')
 const withSass = require('@zeit/next-sass');
 const withCSS = require("@zeit/next-css");
 const withFonts = require('next-fonts');
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  })
 
-
-module.exports = withSass(withCSS(withFonts({
+module.exports = withBundleAnalyzer(withSass(withCSS(withFonts({
     target: 'serverless',
     webpack: function (config) {
         config
@@ -41,4 +43,4 @@ module.exports = withSass(withCSS(withFonts({
         return routes
     }
 
-})));
+}))));

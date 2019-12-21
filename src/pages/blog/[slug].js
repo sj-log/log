@@ -1,7 +1,10 @@
 import * as React from 'react'
 import matter from "gray-matter";
-import ReactMarkdown from "react-markdown";
-import Disqus from 'disqus-react';
+import Disqus from "disqus-react";
+
+// client side rendering components
+import dynamic from 'next/dynamic'
+const ReactMarkdown = dynamic(()=>import("react-markdown"),{ssr:false})
 
 // components
 import Layout from '../../components/Layout'
@@ -25,7 +28,7 @@ export default function BlogTemplate(props) {
             <article className="blog">
 
                 <div className="blog__info">
-                    <h1 className="post-title lengthen">{frontmatter.title}</h1>
+                    <h1 className="post-title">{frontmatter.title}</h1>
                     <h3 className="post-date">{reformatDate(frontmatter.date)}</h3>
                 </div>
                 <div className="blog__body">
