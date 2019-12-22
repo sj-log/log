@@ -1,0 +1,21 @@
+{
+    "name": "sj",
+    "short_name": "log",
+    "description": "A blog for SJ",
+    "icons": [
+        {
+            "src": "https://user-images.githubusercontent.com/35059428/71327994-58c46280-2553-11ea-9793-c3491d207dd5.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }, {
+            "src": "https://user-images.githubusercontent.com/35059428/71328008-975a1d00-2553-11ea-8163-d05c21211ab1.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#ffffff"
+}

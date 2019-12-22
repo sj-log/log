@@ -21,7 +21,6 @@ const BlogList = (props) => {
         return (
 
             <ul className="list">
-
                 <h1 id={wantToShowTheseCategory} className="category-title lengthen2">{wantToShowTheseCategory}</h1>
 
                 {props.allBlogs.length > 1 && props
@@ -42,21 +41,17 @@ const BlogList = (props) => {
                         {
                             if(isThereThisCategoriedPost && !isDraft) {
                                 return (
-                                    <Fragment key={i}>
+                                    <li key={i}>
                                         <Link
                                             key={post.slug}
                                             href={{
                                             pathname: `/blog/${post.slug}`
                                         }}>
                                             <a>
-                                                <li>
-                                                    <div className="blog__info">
-                                                        <h2 className='post-title translateX'>{post.fm.title}</h2>
-                                                    </div>
-                                                </li>
+                                                <h2 className='post-title translateX'>{post.fm.title}</h2>
                                             </a>
                                         </Link>
-                                    </Fragment>
+                                    </li>
                                 )
                             }
                         }

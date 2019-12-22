@@ -1,9 +1,9 @@
-@import url( 'https://fonts.googleapis.com/css?family=Noto+Sans+KR:300|Poiret+One&display=swap');
-@import url( 'https://fonts.googleapis.com/css?family=Montserrat+Subrayada:700|Palanquin+Dark:500,600,700&display=swap');
+@import url( 'https://fonts.googleapis.com/css?family=Noto+Sans+KR:300|Montserrat+Subrayada:700|Poiret+One|Palanquin+Dark:500,600,700&display=swap');
 
 $goldenSize: 1.1613rem;
 $navWidth: 15vw;
 $articleWidth: 85vw;
+$subTitleColor: #000000e0;
 // shadow
 $boxShadow: 0 5px 10px #d6d6d6;
 @mixin customizedScrollbarWidth {
@@ -55,11 +55,11 @@ html {
 
 // effect 
 .translateX {
-    color: grey;
+    color: $subTitleColor;
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     &:hover {
-        transform: translateX($goldenSize*1.3);
+        transform: translateX($goldenSize*2);
         color: black;
         font-weight: 900;
 
@@ -141,14 +141,14 @@ body {
         height: 100vh;
         .nav {
             position: fixed;
-          
+
             font-family: 'Palanquin Dark', sans-serif;
 
             font-weight: 800;
 
             .parent-category {
                 font-size: $goldenSize*2;
-                letter-spacing:$goldenSize*0.5 ;
+                letter-spacing: $goldenSize*0.5;
             }
             .header {
                 width: $navWidth;
@@ -173,7 +173,7 @@ body {
     }
 
     .content {
-        font-family: 'Noto Sans KR', sans-serif;
+
         grid-area: content;
         overflow: hidden;
 
@@ -208,12 +208,13 @@ body {
                 }
             }
             .blog__body {
+                font-family: 'Noto Sans KR', sans-serif;
                 line-height: 22pt;
                 letter-spacing: 0.8px;
                 text-align: left;
 
-                p{
-                    margin-top:$goldenSize*2.5;
+                p {
+                    margin-top: $goldenSize*2.5;
                     margin-bottom: $goldenSize*2.5;
                 }
 
@@ -240,34 +241,36 @@ body {
         .list {
             padding: 0;
             margin: 0;
-
-            .category-title {
-
-                font-family: 'Palanquin Dark', sans-serif;
-                // font-family: 'Montserrat Subrayada', sans-serif;
-                font-size: $goldenSize*4;
-                display: inline-block;
-                margin: $goldenSize 0;
-            }
-            & > a {
-                list-style: none;
-                text-decoration: none;
-                display: block;
-                .blog__info {
-
-                    .post-title {
-
-                        text-align: left;
-                        font-size: $goldenSize*1;
-                        font-weight: 550;
+            & {
+                li {
+                    font-family: 'Noto Sans KR', sans-serif;
+                    list-style: none;
+                    display: block;
+                    a {
+                        text-decoration: none;
 
                     }
+                }
+                .category-title {
+
+                    font-family: 'Palanquin Dark', sans-serif;
+                    // font-family: 'Montserrat Subrayada', sans-serif;
+                    font-size: $goldenSize*4;
+                    display: inline-block;
+                    margin: $goldenSize 0;
+                }
+
+                .post-title {
+                    display: inline-block;
+                    text-align: left;
+                    font-size: $goldenSize*1;
+                    font-weight: 550;
 
                 }
 
             }
+
         }
 
     }
-
 }
