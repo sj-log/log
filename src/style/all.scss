@@ -59,8 +59,9 @@ html {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     &:hover {
-        transform: translateX($goldenSize)+scale(1.07);
+        transform: translateX($goldenSize*1.3);
         color: black;
+        font-weight: 900;
 
     }
 }
@@ -69,7 +70,7 @@ html {
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     &:hover {
-        letter-spacing: 5px;
+        letter-spacing: $goldenSize*2;
     }
 }
 
@@ -146,7 +147,8 @@ body {
             font-weight: 800;
 
             .parent-category {
-                font-size: $goldenSize*1.5;
+                font-size: $goldenSize*2;
+                letter-spacing:$goldenSize*0.5 ;
             }
             .header {
                 width: $navWidth;
@@ -164,6 +166,7 @@ body {
                 text-decoration: none;
                 &:hover {
                     opacity: 1;
+                    letter-spacing: $goldenSize*1.5;
                 }
             }
         }

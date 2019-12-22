@@ -31,7 +31,7 @@ export default function BlogTemplate(props) {
                     <h1 className="post-title">{props.postTitle}</h1>
                     <h3 className="post-date">{reformatDate(props.date)}</h3>
                 </div>
-                <div>
+                <div className="blog__body">
                     <ReactMarkdown escapeHtml={false} source={markdownBody}/>
                 </div>
             </article>
