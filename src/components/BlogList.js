@@ -3,30 +3,44 @@ import {Fragment} from "react";
 
 const BlogList = (props) => {
 
-    const sortByDateAcs = (props) => {
-        var allBlogs = props.allBlogs;
+    const allBlogs = props.allBlogs
+
+    const sortByDateAcs = (allBlogs) => {
+
         allBlogs.sort((a, b) => {
-            if (a.document.data.date > b.document.data.date) 
+            if (a.fm.date > b.fm.date) 
                 return -1
-            if (a.document.data.date < b.document.data.date) 
+            if (a.fm.date < b.fm.date) 
                 return 1
             return 0
         })
     }
 
-    
+    const showPostsByCategory = (props, wantToShowTheseCategory) => {
 
-    const showPostsByCategory = (props, category) => {
-        var category = category;
         return (
+
             <ul className="list">
-                <h1 id={category} className="category-title lengthen2">{category}</h1>
+
+                <h1 id={wantToShowTheseCategory} className="category-title lengthen2">{wantToShowTheseCategory}</h1>
+
                 {props.allBlogs.length > 1 && props
                     .allBlogs
                     .map((post, i) => {
+
+                        try {
+                            var categoryFromAllBlogs = post.fm.category
+                            var isThereThisCategoriedPost = categoryFromAllBlogs.includes(wantToShowTheseCategory)
+                            var isDraft = ((post.fm.status !== undefined && post.fm.status.includes("draft"))
+                                ? true
+                                : false)
+                        } catch (e) {
+                            return null
+                        }
+
+                        // category show proc
                         {
-                            if(post.document.data.category == category 
-                            && post.document.data.status !== "draft") {
+                            if(isThereThisCategoriedPost && !isDraft) {
                                 return (
                                     <Fragment key={i}>
                                         <Link
@@ -37,7 +51,7 @@ const BlogList = (props) => {
                                             <a>
                                                 <li>
                                                     <div className="blog__info">
-                                                        <h2 className='post-title translateX'>{post.document.data.title}</h2>
+                                                        <h2 className='post-title translateX'>{post.fm.title}</h2>
                                                     </div>
                                                 </li>
                                             </a>
@@ -46,8 +60,7 @@ const BlogList = (props) => {
                                 )
                             }
                         }
-                    })
-}
+                    })}
             </ul >
         )
 
@@ -55,11 +68,11 @@ const BlogList = (props) => {
 
     return (
         <Fragment>
-            {sortByDateAcs(props)}
+            {sortByDateAcs(allBlogs)}
             {showPostsByCategory(props, "Coding")}
             {showPostsByCategory(props, "Book")}
-                {showPostsByCategory(props, "Essay")}
-                {showPostsByCategory(props, "Marketing")}
+            {showPostsByCategory(props, "Essay")}
+            {showPostsByCategory(props, "Marketing")}
         </Fragment >
     );
 };

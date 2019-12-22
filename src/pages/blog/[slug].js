@@ -1,23 +1,23 @@
 import * as React from 'react'
-import matter from "gray-matter";
 import Disqus from "disqus-react";
 
 // client side rendering components
 import dynamic from 'next/dynamic'
-const ReactMarkdown = dynamic(()=>import("react-markdown"),{ssr:false})
+const ReactMarkdown = dynamic(() => import ("react-markdown"), {ssr: false})
 
 // components
 import Layout from '../../components/Layout'
 
 export default function BlogTemplate(props) {
+
+
     function reformatDate(fullDate) {
         const date = new Date(fullDate)
         return date
             .toDateString()
             .slice(4);
     }
-    const markdownBody = props.content
-    const frontmatter = props.data
+    const markdownBody = props.markdownBody
 
     return (
         <Layout
@@ -28,10 +28,10 @@ export default function BlogTemplate(props) {
             <article className="blog">
 
                 <div className="blog__info">
-                    <h1 className="post-title">{frontmatter.title}</h1>
-                    <h3 className="post-date">{reformatDate(frontmatter.date)}</h3>
+                    <h1 className="post-title">{props.postTitle}</h1>
+                    <h3 className="post-date">{reformatDate(props.date)}</h3>
                 </div>
-                <div className="blog__body">
+                <div>
                     <ReactMarkdown escapeHtml={false} source={markdownBody}/>
                 </div>
             </article>
@@ -52,17 +52,36 @@ BlogTemplate.getInitialProps = async function (ctx) {
     const {slug} = ctx.query
     const content = await import (`../../posts/${slug}.md`)
     const config = await import (`../../data/config.json`)
-    const data = matter(content.default);
-    const title = data.data.title;
+
+    // Parse frontMatter & markdownbody in document
+    const FullMdStr = content.default;
+    const dirtyFrontMatter = FullMdStr.split(/---/g, 2);
+    const cleanFM = dirtyFrontMatter[1]
+    const moreCleanFM = cleanFM.split(/[\n\r]/g)
+
+    // fm obj by input into key-value 
+    let fm = moreCleanFM.reduce((obj, data) => {
+        let [k,
+            v] = data.split(/:/g)
+        var trimmedK = k.trim()
+        obj[trimmedK] = v
+        return obj
+    }, {})
+
+
+    // original [slug]
+
+    const date = fm.date;
+    const title = fm.title;
+    const postExcerpt = FullMdStr.split(/---/g)[2].replace(/[#-/]/g,"").substr(0,155).replace(/\r\n/g," ")
+    const markdownBody = FullMdStr.split(/---/g)[2]
     const siteUrl = config.siteUrl + ctx.asPath;
-    const postExcerpt = data
-        .content
-        .substring(155, 0);
-    var postThumbnail = data.data.thumbnail;
+    var postThumbnail = fm.thumbnail;
     if (postThumbnail == undefined) {
         postThumbnail = "https://user-images.githubusercontent.com/35059428/71152640-57a4e400-227a-11ea-8" +
                 "d95-788d168e3764.png"
     }
+
     // comment part
     const disqusShortname = config.disqusShortName;
     const disqusConfig = {
@@ -78,7 +97,10 @@ BlogTemplate.getInitialProps = async function (ctx) {
         postExcerpt: postExcerpt,
         siteDescription: postExcerpt,
         siteUrl: siteUrl,
+        date : date,
+        postTitle : title,
         siteTitle: config.title + " | " + title,
-        ...data
+    markdownBody : markdownBody
+        // ...data
     }
 }

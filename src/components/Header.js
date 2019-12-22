@@ -12,16 +12,7 @@ export default function Header(props) {
                     </a>
                 </Link>
 
-                <Link
-                    href={`${typeof window !== "undefined" && window.location.pathname == "/info"
-                    ? "/"
-                    : "/info"}`}>
-                    <a>
-                        <h1 className="parent-category lengthen">{`${typeof window !== "undefined" && window.location.pathname == "/info"
-                                ? "Exit"
-                                : "Info"}`}</h1>
-                    </a>
-                </Link>
+               
 
                    
             </nav>

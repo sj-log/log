@@ -1,9 +1,7 @@
 const glob = require('glob')
-const webpack = require('webpack');
 const withSass = require('@zeit/next-sass');
 const withCSS = require("@zeit/next-css");
 const withFonts = require('next-fonts');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
     enabled: process.env.ANALYZE === 'true'
 })
@@ -17,25 +15,7 @@ module.exports = withBundleAnalyzer(withSass(withCSS(withFonts({
             .module
             .rules
             .push({test: /\.md$/, use: "raw-loader"});
-        // css optimization reducing its size
-
-        if (isServer) {
-            return config;
-        }
-
-        var isProduction = config.mode === 'production';
-        if (!isProduction) {
-            return config;
-        }
-        config
-            .plugins
-            .push(new webpack.optimize.LimitChunkCountPlugin({maxChunks: 3}));
-
-        config
-            .optimization
-            .minimizer
-            .push(new OptimizeCSSAssetsPlugin({}));
-
+      
         return config;
     },
     exportPathMap: async function () {
