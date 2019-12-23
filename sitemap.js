@@ -1,3 +1,5 @@
+// this package origins from here = https://github.com/IlusionDev/nextjs-sitemap-generator
+
 const sitemap = require('nextjs-sitemap-generator');  
 
 sitemap({  
