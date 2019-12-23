@@ -1,5 +1,4 @@
-import * as React from 'react'
-import Disqus from "disqus-react";
+import {DiscussionEmbed} from "disqus-react";
 
 // client side rendering components
 import dynamic from 'next/dynamic'
@@ -9,7 +8,6 @@ const ReactMarkdown = dynamic(() => import ("react-markdown"), {ssr: false})
 import Layout from '../../components/Layout'
 
 export default function BlogTemplate(props) {
-
 
     function reformatDate(fullDate) {
         const date = new Date(fullDate)
@@ -36,9 +34,7 @@ export default function BlogTemplate(props) {
                 </div>
             </article>
             <footer className="disqus-footer">
-                <Disqus.DiscussionEmbed
-                    shortname={props.disqusShortname}
-                    config={props.disqusConfig}/>
+                <DiscussionEmbed shortname={props.disqusShortname} config={props.disqusConfig}/>
 
             </footer>
 
@@ -59,7 +55,7 @@ BlogTemplate.getInitialProps = async function (ctx) {
     const cleanFM = dirtyFrontMatter[1]
     const moreCleanFM = cleanFM.split(/[\n\r]/g)
 
-    // fm obj by input into key-value 
+    // fm obj by input into key-value
     let fm = moreCleanFM.reduce((obj, data) => {
         let [k,
             v] = data.split(/:/g)
@@ -68,12 +64,15 @@ BlogTemplate.getInitialProps = async function (ctx) {
         return obj
     }, {})
 
-
     // original [slug]
 
     const date = fm.date;
     const title = fm.title;
-    const postExcerpt = FullMdStr.split(/---/g)[2].replace(/[#-/]/g,"").substr(0,155).replace(/\r\n/g," ")
+    const postExcerpt = FullMdStr
+        .split(/---/g)[2]
+        .replace(/[#-/]/g, "")
+        .substr(0, 155)
+        .replace(/\r\n/g, " ")
     const markdownBody = FullMdStr.split(/---/g)[2]
     const siteUrl = config.siteUrl + ctx.asPath;
     var postThumbnail = fm.thumbnail;
@@ -97,10 +96,10 @@ BlogTemplate.getInitialProps = async function (ctx) {
         postExcerpt: postExcerpt,
         siteDescription: postExcerpt,
         siteUrl: siteUrl,
-        date : date,
-        postTitle : title,
+        date: date,
+        postTitle: title,
         siteTitle: config.title + " | " + title,
-    markdownBody : markdownBody
+        markdownBody: markdownBody
         // ...data
     }
 }

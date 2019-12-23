@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import sortBy from "lodash.sortby"
 // components
 
 const Layout = dynamic(() => import ("../components/Layout"), {ssr: false})
@@ -21,10 +22,11 @@ const Index = props => {
 
 export default Index;
 
-Index.getInitialProps = async function () {
+Index.getInitialProps = async function (context) {
     const siteConfig = await import (`../data/config.json`)
     //get posts & context from folder
     const classifiedMds = (context => {
+          
         const keys = context.keys(); // this is the sorted
         const values = keys.map(context);
         const data = keys.map((key, index) => {
@@ -52,7 +54,7 @@ Index.getInitialProps = async function () {
             // console.log(fm)
             return {FullMdString, slug, fm};
         });
-
+       
         return data;
     })(await require.context("../posts", true, /\.md$/));
 

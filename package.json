@@ -22,6 +22,7 @@
         "core-js": "^3.5.0",
         "disqus-react": "^1.0.7",
         "fs": "^0.0.1-security",
+        "lodash.sortby": "^4.7.0",
         "native-url": "^0.2.4",
         "next": "^9.1.6",
         "next-compose-plugins": "^2.2.0",
@@ -43,11 +44,17 @@
     "devDependencies": {
         "prettier": "^1.18.2"
     },
-    "keywords": [
-        "next"
-    ],
+    "keywords": ["next"],
     "repository": {
         "type": "git",
         "url": "https://github.com/kendallstrautman/brevifolia-nextjs"
-    }
+    },
+    "presets": [
+        [
+            "env", {
+                "modules": false
+            }
+        ]
+    ]
+
 }
