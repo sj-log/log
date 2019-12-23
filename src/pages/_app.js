@@ -1,7 +1,8 @@
 import App from 'next/app';
 import React, {Fragment} from 'react';
 import Router from 'next/router';
-
+import withGA from 'next-ga';
+import config from '../data/config.json';
 // styling
 import '../style/all.scss'
 
@@ -16,7 +17,15 @@ import dynamic from 'next/dynamic'
 const Loader = dynamic(()=>import('react-loader-spinner'),{ssr:false})
 
 
-export default class RootApp extends App {
+class RootApp extends App {
+    static async getInitialProps({ Component, router, ctx }) {
+		let pageProps = {}
+		if (Component.getInitialProps) {
+			pageProps = await Component.getInitialProps(ctx)
+		}
+        return { pageProps }
+    }        
+    
     state = {
         isLoading: false
     };
@@ -77,3 +86,4 @@ export default class RootApp extends App {
 
     }
 };
+export default withGA(config.GATrackingID, Router)(RootApp)

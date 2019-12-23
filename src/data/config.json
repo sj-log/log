@@ -3,5 +3,6 @@
   "description":"A blog to leave what I learned and felt.",
   "repositoryUrl":"https://github.com/sj-log/log",
   "disqusShortName" : "ollagada",
-  "siteUrl":"https://log-sj.now.sh/"
+  "siteUrl":"https://log-sj.now.sh/",
+  "GATrackingID" : "UA-116676814-1"
 }
