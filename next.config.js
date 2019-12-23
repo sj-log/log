@@ -7,7 +7,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer(withSass(withCSS(withFonts({
-  
+ //next.config.js
+ experimental: {
+    modern: true,
+    async rewrites () {
+      return [
+        {source: '/sitemap.xml', destination: '/api/sitemap'},
+      ]
+    },
+    catchAllRouting: true
+  },
     target: 'serverless',
     webpack: function (config, {dev, isServer}) {
 
