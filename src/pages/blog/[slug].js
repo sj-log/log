@@ -61,7 +61,7 @@ BlogTemplate.getInitialProps = async function (ctx) {
         let [k,
             v] = data.split(/:/);
 
-            // if double semicolon found proc
+            // thumbnail link catcher
         let isKeyThumbnail = k.includes("thumbnail")
         if (isKeyThumbnail) {
             [k, v] = data.split(/thumbnail : /)
@@ -72,7 +72,6 @@ BlogTemplate.getInitialProps = async function (ctx) {
 
         var trimmedK = k.trim()
         obj[trimmedK] = v
-        console.log(obj)
         return obj
     }, {})
 
@@ -88,7 +87,6 @@ BlogTemplate.getInitialProps = async function (ctx) {
     const markdownBody = FullMdStr.split(/---/g)[2]
     const siteUrl = config.siteUrl + ctx.asPath;
     var postThumbnail = fm.thumbnail;
-    console.log(fm)
     if (postThumbnail == undefined) {
         postThumbnail = "https://user-images.githubusercontent.com/35059428/71152640-57a4e400-227a-11ea-8" +
                 "d95-788d168e3764.png"

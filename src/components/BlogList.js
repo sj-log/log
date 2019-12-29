@@ -66,7 +66,6 @@ const BlogList = (props) => {
             {sortByDateAcs(allBlogs)}
             {showPostsByCategory(props, "Coding")}
             {showPostsByCategory(props, "Book")}
-            {showPostsByCategory(props, "Essay")}
             {showPostsByCategory(props, "Marketing")}
         </Fragment >
     );

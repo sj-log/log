@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import sortBy from "lodash.sortby"
+import { string } from 'prop-types';
 // components
 
 const Layout = dynamic(() => import ("../components/Layout"), {ssr: false})
@@ -26,7 +27,7 @@ Index.getInitialProps = async function (context) {
     const siteConfig = await import (`../data/config.json`)
     //get posts & context from folder
     const classifiedMds = (context => {
-          
+
         const keys = context.keys(); // this is the sorted
         const values = keys.map(context);
         const data = keys.map((key, index) => {
@@ -46,15 +47,29 @@ Index.getInitialProps = async function (context) {
 
             // input into key-value obj
             let fm = moreCleanFM.reduce((obj, data) => {
-                let [k,v] = data.split(/:/g)
+
+
+                let [k,
+                    v] = data.split(/:/)
+                // thumbnail link catcher
+                let isKeyThumbnail = k.includes("thumbnail")
+                if (isKeyThumbnail) {
+                    [k, v] = data.split(/thumbnail : /)
+                    k = 'thumbnail'
+                } else {
+                    [k, v] = data.split(/:/g)
+                }
+
+                (typeof v!="undefined") ? v = v.replace(" ",''): v;
+
                 var trimmedK = k.trim()
                 obj[trimmedK] = v
                 return obj
             }, {})
-            // console.log(fm)
+    
             return {FullMdString, slug, fm};
         });
-       
+
         return data;
     })(await require.context("../posts", true, /\.md$/));
 
