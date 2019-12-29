@@ -3,11 +3,12 @@ import {DiscussionEmbed} from "disqus-react";
 // client side rendering components
 import dynamic from 'next/dynamic'
 const ReactMarkdown = dynamic(() => import ("react-markdown"), {ssr: false})
-
 // components
 import Layout from '../../components/Layout'
 
 export default function BlogTemplate(props) {
+
+
 
     function reformatDate(fullDate) {
         const date = new Date(fullDate)
@@ -34,7 +35,9 @@ export default function BlogTemplate(props) {
                 </div>
             </article>
             <footer className="disqus-footer">
-                <DiscussionEmbed shortname={props.disqusShortname} config={props.disqusConfig}/>
+         
+<DiscussionEmbed shortname={props.disqusShortname} config={props.disqusConfig}/>
+
 
             </footer>
 

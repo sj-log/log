@@ -7,7 +7,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer(withSass(withCSS(withFonts({
- 
+    distdir: '_next',
+    
+    pageExtensions : ['jsx','js'],
     target: 'serverless',
     webpack: function (config, {dev, isServer}) {
 
