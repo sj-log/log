@@ -18,7 +18,7 @@
         "@mdx-js/loader": "^1.5.3",
         "@next/bundle-analyzer": "^9.1.6",
         "@zeit/next-sass": "^1.0.1",
-        "acorn": "^7.1.0",
+        "acorn": "^7.1.1",
         "core-js": "^3.5.0",
         "disqus-react": "^1.0.7",
         "fs": "^0.0.1-security",
